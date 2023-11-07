@@ -1,0 +1,43 @@
+<h1>Novo Item</h1>
+<p></p>
+<br><br>
+<div class="well" style="margin: 6px;">
+  <form #formItem="ngForm">
+    <div class="form-group">
+      <label for="id_item">ID:</label>
+      <input type="text" class="form-control" id="id_item" name="id_item" [(ngModel)]="item.id_item" disabled>
+    </div>
+    <div class="form-group">
+      <label for="nome_item">Nome do Item:</label>
+      <input type="text" class="form-control" id="nome_item" name="nome_item" [(ngModel)]="item.nome_item" #nome_item="ngModel" minlength="2" required>
+      <div *ngIf="nome_item.errors && (nome_item.dirty || nome_item.touched)" class="alert alert-danger">
+        <div [hidden]="!nome_item.errors['required']">
+          Digite o nome do item.
+        </div>
+        <div [hidden]="!nome_item.errors['minlength']">
+          O nome do item deve conter pelo menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="valor">Valor:</label>
+      <input type="number" class="form-control" id="valor" name="valor" [(ngModel)]="item.valor" #valor="ngModel" required>
+      <div *ngIf="valor.errors && (valor.dirty || valor.touched)" class="alert alert-danger">
+        <div [hidden]="!valor.errors['required']">
+          Digite o valor do item.
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" 
+        (click)="salvar()" [disabled]="!formItem.form.valid" style="margin: 6px; background-color: #ff5a5e;">
+        <i *ngIf="!loading" class="fa fa-save" aria-hidden="true"></i>
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> SALVAR
+      </button>
+      <a [routerLink]="['/item/list']" class="btn btn-secondary" style="margin: 6px; background-color: #ff5a5e;">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>

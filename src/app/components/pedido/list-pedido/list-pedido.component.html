@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Lista de Pedidos</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th>ID Cliente</th>
+          <th>Nome do Cliente</th>
+          <th>Sobrenome do Cliente</th>
+          <th>ID Item</th>
+          <th>Descrição</th>
+          <th>Valor Unitário</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos">
+          <td>{{ pedido.id_pedido }}</td>
+          <td>{{ pedido.cliente?.id_customer }}</td>
+          <td>{{ pedido.cliente?.firstName }}</td>
+          <td>{{ pedido.cliente?.secondName }}</td>
+          <td>{{ pedido.item?.id_item }}</td>
+          <td>{{ pedido.item?.nome_item }}</td>
+          <td>{{ pedido.item?.valor | currency:'BRL' }}</td>
+          <td>{{ pedido.quantidade }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

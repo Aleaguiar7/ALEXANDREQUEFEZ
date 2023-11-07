@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title">Detalhes do Item</h4>
+    <button type="button" class="close" (click)="activeModal.dismiss()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="item">
+      <p><strong>ID do Item:</strong> {{ item.id_item }}</p>
+      <p><strong>Nome do Item:</strong> {{ item.nome_item }}</p>
+      <p><strong>Valor:</strong> {{ item.valor }}</p>
+      <!-- Adicione mais informações do item conforme necessário -->
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
+  </div>
+  

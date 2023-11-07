@@ -1,0 +1,46 @@
+<h1>Novo Cliente</h1>
+<p></p>
+<br><br>
+<div class="well" style="margin: 6px;">
+  <form #formCustomer="ngForm">
+    <div class="form-group">
+      <label for="id_customer">ID:</label>
+      <input type="text" class="form-control" id="id_customer" name="id_customer" [(ngModel)]="customer.id_customer" disabled>
+    </div>
+    <div class="form-group">
+      <label for="firstName">Primeiro nome:</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" minlength="2" required>
+      <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+        <div [hidden]="!firstName.errors['required']">
+          Digite o primeiro nome.
+        </div>
+        <div [hidden]="!firstName.errors['minlength']">
+          O nome deve conter pelo menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="secondName">Segundo nome:</label>
+      <input type="text" class="form-control" id="secondName" name="secondName" [(ngModel)]="customer.secondName" #secondName="ngModel" minlength="2" required>
+      <div *ngIf="secondName.errors && (secondName.dirty || secondName.touched)" class="alert alert-danger">
+        <div [hidden]="!secondName.errors['required']">
+          Digite o segundo nome.
+        </div>
+        <div [hidden]="!secondName.errors['minlength']">
+          O nome deve conter pelo menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" 
+        (click)="salvar()" [disabled]="!formCustomer.form.valid" style="margin: 6px; background-color: #ff5a5e;">
+        <i *ngIf = "!loading" class = "fa fa-save" aria-hidden="true"></i> 
+        <span *ngIf="loading" class ="spinner-border spinner-border-sm mr-1"></span> SALVAR
+      </button>
+      <a [routerLink]="['/customer/list']" class="btn btn-secondary" style="margin: 6px; background-color: #ff5a5e;">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>

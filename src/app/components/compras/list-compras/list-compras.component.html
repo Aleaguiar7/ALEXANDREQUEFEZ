@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Listar Vendas</h2>
+
+  <div class="form-group">
+    <label for="id_customer">ID do Cliente:</label>
+    <input type="number" class="form-control" id="id_customer" [(ngModel)]="id_customer" />   
+    <button class="btn btn-primary" style="background-color: #ff5a5e;" (click)="carregarCustomer()">Carregar Customer</button>
+  </div>
+
+  <h3>Dados do Cliente</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Pedido</th>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Valor</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="customer"> </tr>
+      <tr *ngFor="let pedido of pedidosFiltrados">
+        <td>{{ pedido.id_pedido }}</td>
+        <td>{{ customer.id_customer }}</td>
+        <td>{{ customer.firstName }} {{ customer.secondName }}</td>
+        <td>{{ pedido?.item?.valor }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3>Pedidos do Cliente</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pedido of pedidosFiltrados">
+      <td>{{ pedido?.item?.nome_item }}</td>   
+      <td>{{ pedido.quantidade }}</td>
+    </tr>
+  </tbody>
+</table>

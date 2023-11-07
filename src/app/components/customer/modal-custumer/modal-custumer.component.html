@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title">Detalhes do Cliente</h4>
+    <button type="button" class="close" (click)="activeModal.dismiss()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="customer">
+      <p><strong>ID do Cliente:</strong> {{ customer.id_customer }}</p>
+      <p><strong>Primeiro Nome:</strong> {{ customer.firstName }}</p>
+      <p><strong>Segundo Nome:</strong> {{ customer.secondName }}</p>
+      <!-- Adicione mais informações do cliente conforme necessário -->
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
+  </div>
+  

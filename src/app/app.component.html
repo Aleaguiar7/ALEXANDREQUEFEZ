@@ -1,0 +1,20 @@
+<div>
+  <ul class="nav justify-content-center" style="background-color: #158A8A; block-size: 50px;">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['']" href="#" style="color: rgb(250, 252, 252);">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/customer/list']" href="#" style="color: rgb(250, 252, 252);">CLIENTE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/compras/list']" href="#" style="color: rgb(250, 252, 252);">VENDA</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/pedido/register']" href="#" style="color: rgb(250, 252, 252);">PEDIDO</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/item/list']" href="#" style="color: rgb(250, 252, 252);">ITEM</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

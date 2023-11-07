@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>Cadastrar Pedido do Cliente</h2>
+  <div class="form-group">
+    <label for="id_customer">Digite o ID do Cliente:</label>
+    <input type="text" class="form-control" id="id_customer" [(ngModel)]="id_customer" />
+    <button class="btn btn-primary" (click)="buscarCliente()">Buscar Cliente</button>
+  </div>
+  
+  <div *ngIf="customer">
+    <h3>Detalhes do Cliente</h3>
+    <p>Nome: {{ customer.firstName }}</p>
+    <p>Sobrenome: {{ customer.secondName }}</p>
+  </div>
+
+  <div class="form-group">
+    <label for="id_item">Escolha o Item:</label>
+    <select class="form-control" id="id_item" [(ngModel)]="id_item">
+      <option value="">Selecione um item</option>
+      <option *ngFor="let item of itens" [value]="item.id_item">{{ item.nome_item }}</option>
+    </select>
+    <button class="btn btn-primary" (click)="buscarItem()">Buscar Item</button>
+  </div>
+
+  <div *ngIf="item">
+    <h3>Detalhes do Item</h3>
+    <p>Descrição: {{ item.nome_item }}</p>
+    <p>Valor Unitário: {{ item.valor }}</p>
+  </div>
+
+  <div class="form-group">
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" class="form-control" id="quantidade" [(ngModel)]="quantidade" (change)="calcularValorFinal()" />
+  </div>
+
+  <div class="form-group">
+    <label for="valorFinal">Valor Final:</label>
+    <input type="text" class="form-control" id="valorFinal" [(ngModel)]="valorFinal" readonly />
+  </div>
+
+  <button class="btn btn-success" (click)="calcularValorFinal()">Calcular Valor Final</button>
+  <button class="btn btn-primary" [routerLink]="['/pedido/list']" (click)="cadastrarPedido()">Cadastrar Pedido</button>
+</div>
